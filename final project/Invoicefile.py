@@ -1,0 +1,33 @@
+def invoice(name,cproduct,cquantity,cprice,totalko,total,discount,grandtotal):
+    print('------------------------------------------------------------------')
+    print('------------------------------------------------------------------')
+    import datetime
+    print("\n*****************************Inovice******************************")
+    print("\t\t\t\t\t\tDate : ",datetime.datetime.now().year,"/",datetime.datetime.now().month,"/",datetime.datetime.now().day)
+    print("\t\t\t\t\t\tTime :",datetime.datetime.now().hour,":",datetime.datetime.now().minute)
+    print('Customers name: ',name)
+    print("------------------------------------------------------------------")
+    print('%10s'%"S/N",'%10s'%"Paricular",'%10s'%"Quantity",'%10s'%"Price",'%10s'%"\tAmount")
+    for i in range(0,len(cproduct)):
+        print('%10d'%(i+1),'%10s'%cproduct[i],'%10d'%cquantity[i],'%10d'%cprice[i],'%10d'%totalko[i])
+    print ("\t\t\t\t\t\tTotal\t",total)
+    print ("\t\t\t\t\t\tDiscount",discount)
+    print ("\t\t\t\t\t\tGrandTotal",grandtotal)
+    print('------------------------------------------------------------------')
+    file=open(name+".txt","w")
+    list_=[]
+    list_.append("Customer name:"+str(name))
+    a=(("\n".join(list_))+"\n")
+    file.writelines(a)
+    for i in range(len(cproduct)):
+        list_.append("item:"+str(cproduct[i]))
+        list_.append("quantity:"+str(cquantity[i]))
+        list_.append("price:"+str(cprice[i]))
+        a=(("\n".join(list_))+"\n")
+        file.writelines(a)
+    list_.append("total:"+str(total))
+    list_.append("discount:"+str(discount))
+    list_.append("Grand total:"+str(grandtotal))
+    a=(("\n".join(list_))+"\n")
+    file.writelines(a)
+    file.close()
